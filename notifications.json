@@ -1,7 +1,19 @@
 {
-  "_comment": "Edit this file to schedule notifications. showFrom / showUntil use ISO 8601 format. delayMs is optional ms delay after page open.",
-  "version": "1",
+  "_comment": "Edit this file to schedule notifications. Push to git — no code changes needed. showFrom / showUntil use ISO 8601 (YYYY-MM-DDTHH:MM:SS). Leave both out to always show. delayMs = ms after page open before showing.",
+  "version": "2",
   "notifications": [
+    {
+      "_note": "TEST — shows today (June 3). Delete this entry once confirmed working.",
+      "id": "test-jun3",
+      "title": "🎉 Notifications are working!",
+      "body": "Everything is set up. You can delete this entry from notifications.json now.",
+      "icon": "./icons/icon.svg",
+      "url": "./",
+      "tag": "test-jun3",
+      "showFrom":  "2026-06-03T00:00:00",
+      "showUntil": "2026-06-04T00:00:00",
+      "vibrate": [200, 100, 200]
+    },
     {
       "id": "bday-unlock-2026",
       "title": "Happy Birthday Komal! 🎂🎉",
