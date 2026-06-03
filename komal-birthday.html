@@ -359,6 +359,21 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 .s5-home.visible{opacity:1;}
 .s5-home:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(255,61,127,.5);}
 
+.s5-surprise{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--lilac),var(--pink));
+  color:#fff;font-family:'Baloo 2',cursive;font-size:.92rem;font-weight:900;
+  padding:10px 26px;border-radius:50px;
+  box-shadow:0 4px 18px rgba(201,160,220,.4);
+  cursor:pointer;text-decoration:none;
+  margin-top:10px;
+  transition:transform .15s,box-shadow .15s;
+  animation:titlePop .8s 1.1s cubic-bezier(.34,1.56,.64,1) both;
+  opacity:0;
+}
+.s5-surprise.visible{opacity:1;}
+.s5-surprise:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(201,160,220,.6);}
+
 /* floating hearts s5 */
 .fheart{position:absolute;pointer-events:none;animation:fheartRise linear forwards;}
 @keyframes fheartRise{0%{opacity:0;transform:translateY(0) scale(.5)}20%{opacity:1}100%{opacity:0;transform:translateY(-200px) scale(1.1) rotate(20deg)}}
@@ -453,6 +468,7 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
       </div>
     </div>
     <a class="s5-home visible" href="index.html">💕 Back to Love World</a>
+    <a class="s5-surprise visible" href="komal-surprise.html">One more thing... 🎈</a>
   </div>
 
 </div>
