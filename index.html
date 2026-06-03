@@ -645,6 +645,7 @@ body {
     <!-- 4. Birthday Surprise — BIRTHDAY LOCKED -->
     <div class="card card-lilac locked-bday"
          data-popup="bday"
+         data-href="komal-birthday.html"
          data-emoji="🎂"
          data-title="Shhh... a secret!"
          data-msg="There's something very special hiding here — a birthday surprise made just for you! 🎁 You'll have to wait just a little longer... ✨">
@@ -660,6 +661,7 @@ body {
     <!-- 5. Birthday Galaxy — BIRTHDAY LOCKED -->
     <div class="card card-gold locked-bday"
          data-popup="bday"
+         data-href="komal-birthday-multiscreen.html"
          data-emoji="🌟"
          data-title="A Galaxy of Love"
          data-msg="A whole galaxy is being built just for your birthday! Stars, wishes, moonlight... it'll take your breath away 🌙 Keep counting down! ✨">
@@ -833,15 +835,21 @@ pClose.addEventListener('click', closePopup);
 overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
 
 /* ── wire up locked cards ── */
-document.querySelectorAll('.card.locked-bday, .card.locked-soon').forEach(card => {
+document.querySelectorAll('.card.locked-bday').forEach(card => {
   card.addEventListener('click', e => {
     e.preventDefault();
-    openPopup(
-      card.dataset.popup,
-      card.dataset.emoji,
-      card.dataset.title,
-      card.dataset.msg
-    );
+    if (!getCountdown() && card.dataset.href) {
+      // birthday is here — unlock and navigate
+      window.location.href = card.dataset.href;
+    } else {
+      openPopup(card.dataset.popup, card.dataset.emoji, card.dataset.title, card.dataset.msg);
+    }
+  });
+});
+document.querySelectorAll('.card.locked-soon').forEach(card => {
+  card.addEventListener('click', e => {
+    e.preventDefault();
+    openPopup(card.dataset.popup, card.dataset.emoji, card.dataset.title, card.dataset.msg);
   });
 });
 
