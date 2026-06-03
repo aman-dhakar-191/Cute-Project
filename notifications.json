@@ -3,6 +3,17 @@
   "version": "1",
   "notifications": [
     {
+      "id": "test-notification-2026",
+      "title": "🔔 Test Notification",
+      "body": "This is a test notification — if you're seeing this, it's working!",
+      "icon": "./icons/icon.svg",
+      "url": "./index.html",
+      "tag": "test-2026",
+      "showFrom":  "2026-06-03T00:00:00",
+      "showUntil": "2026-06-03T23:59:59",
+      "vibrate": [100, 50, 100]
+    },
+    {
       "id": "bday-unlock-2026",
       "title": "Happy Birthday Komal! 🎂🎉",
       "body": "Your birthday surprises are now unlocked — go explore! 💕",
