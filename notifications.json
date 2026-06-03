@@ -1,0 +1,29 @@
+{
+  "_comment": "Edit this file to schedule notifications. showFrom / showUntil use ISO 8601 format. delayMs is optional ms delay after page open.",
+  "version": "1",
+  "notifications": [
+    {
+      "id": "bday-unlock-2026",
+      "title": "Happy Birthday Komal! 🎂🎉",
+      "body": "Your birthday surprises are now unlocked — go explore! 💕",
+      "icon": "./icons/icon.svg",
+      "url": "./komal-birthday.html",
+      "tag": "birthday-2026",
+      "showFrom":  "2026-06-21T00:00:00",
+      "showUntil": "2026-06-23T00:00:00",
+      "vibrate": [200, 100, 200, 100, 400]
+    },
+    {
+      "id": "surprise-room-2026",
+      "title": "Psst — there's a surprise room 🎈",
+      "body": "Pop balloons, unwrap little gifts & find what's hiding. Just for you.",
+      "icon": "./icons/icon.svg",
+      "url": "./komal-surprise.html",
+      "tag": "surprise-2026",
+      "showFrom":  "2026-06-21T06:00:00",
+      "showUntil": "2026-06-22T00:00:00",
+      "vibrate": [300, 100, 300],
+      "delayMs": 6000
+    }
+  ]
+}

@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Komal's Love World 💖</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#ff7eb3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Love World">
+<link rel="apple-touch-icon" href="./icons/icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2:wght@700;800;900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -931,5 +937,6 @@ const observer = new IntersectionObserver(entries => {
 },{threshold:0.1});
 document.querySelectorAll('.card').forEach(c => observer.observe(c));
 </script>
+<script src="./pwa.js"></script>
 </body>
 </html>
