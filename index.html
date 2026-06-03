@@ -624,21 +624,14 @@ body {
       <div class="card-btn">Play Now 💍</div>
     </a>
 
-    <!-- 2. Kawaii Fruit Drop — COMING SOON -->
-    <div class="card card-peach locked-soon"
-         data-popup="soon"
-         data-emoji="🍓"
-         data-title="Kawaii Fruit Drop"
-         data-msg="A fruity little game is being made with all the love! Bunny basket, kawaii fruits, sparkles... it's going to be SO cute! 🐰🍉">
-      <span class="card-badge" style="background:linear-gradient(135deg,#c9a0dc,#9b59dc)">✨ Coming Soon</span>
+    <!-- 2. Kawaii Fruit Drop — LIVE -->
+    <a class="card card-peach" href="kawaii-fruit-drop.html">
+      <span class="card-badge">🎮 Game</span>
       <span class="card-emoji">🍓</span>
       <h2>Kawaii Fruit Drop</h2>
-      <p>A yummy game is on its way... something with cute fruits, a bunny basket &amp; so many sparkles 🍉🐰</p>
-      <div class="soon-dots">
-        <div class="soon-dot"></div><div class="soon-dot"></div><div class="soon-dot"></div>
-      </div>
-      <div class="card-btn" style="background:linear-gradient(135deg,#c9a0dc,#9b59dc)">Coming Soon ✨</div>
-    </div>
+      <p>Catch falling kawaii fruits with a bunny basket! 6 fruity levels with combos, sparkles &amp; cute bunny character 🐰🍉</p>
+      <div class="card-btn">Play Now 🍉</div>
+    </a>
 
     <!-- 3. Kawaii World — LIVE -->
     <a class="card card-mint" href="cute.html">
@@ -652,6 +645,7 @@ body {
     <!-- 4. Birthday Surprise — BIRTHDAY LOCKED -->
     <div class="card card-lilac locked-bday"
          data-popup="bday"
+         data-href="komal-birthday.html"
          data-emoji="🎂"
          data-title="Shhh... a secret!"
          data-msg="There's something very special hiding here — a birthday surprise made just for you! 🎁 You'll have to wait just a little longer... ✨">
@@ -667,6 +661,7 @@ body {
     <!-- 5. Birthday Galaxy — BIRTHDAY LOCKED -->
     <div class="card card-gold locked-bday"
          data-popup="bday"
+         data-href="komal-birthday-multiscreen.html"
          data-emoji="🌟"
          data-title="A Galaxy of Love"
          data-msg="A whole galaxy is being built just for your birthday! Stars, wishes, moonlight... it'll take your breath away 🌙 Keep counting down! ✨">
@@ -679,21 +674,14 @@ body {
       <div class="card-btn" style="background:linear-gradient(135deg,#ffd700,#ff9900);color:#7a4a00">🔒 Unlocks Jun 21</div>
     </div>
 
-    <!-- 6. Komal's Cute Page — COMING SOON -->
-    <div class="card card-sky locked-soon"
-         data-popup="soon"
-         data-emoji="🌸"
-         data-title="Komal's Cute Page"
-         data-msg="A magical little world is being built just for you! Full of kawaii surprises, sparkles & sweet little messages 💕 Watch this space!">
-      <span class="card-badge" style="background:linear-gradient(135deg,#c9a0dc,#9b59dc)">✨ Coming Soon</span>
+    <!-- 6. Komal's Cute Page — LIVE -->
+    <a class="card card-sky" href="komal-cute.html">
+      <span class="card-badge">🌈 Scene</span>
       <span class="card-emoji">🌸</span>
       <h2>Komal's Cute Page</h2>
-      <p>A little kawaii world is being carefully crafted for you... sparkles, surprises &amp; sweet messages are coming! 💕</p>
-      <div class="soon-dots">
-        <div class="soon-dot"></div><div class="soon-dot"></div><div class="soon-dot"></div>
-      </div>
-      <div class="card-btn" style="background:linear-gradient(135deg,#c9a0dc,#9b59dc)">Coming Soon ✨</div>
-    </div>
+      <p>A magical kawaii scene made just for you! Tap the cat, the ducks, tap everywhere for sparkles &amp; sweet messages 💕</p>
+      <div class="card-btn">Visit 🐾</div>
+    </a>
 
   </div>
 </div>
@@ -847,15 +835,21 @@ pClose.addEventListener('click', closePopup);
 overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
 
 /* ── wire up locked cards ── */
-document.querySelectorAll('.card.locked-bday, .card.locked-soon').forEach(card => {
+document.querySelectorAll('.card.locked-bday').forEach(card => {
   card.addEventListener('click', e => {
     e.preventDefault();
-    openPopup(
-      card.dataset.popup,
-      card.dataset.emoji,
-      card.dataset.title,
-      card.dataset.msg
-    );
+    if (!getCountdown() && card.dataset.href) {
+      // birthday is here — unlock and navigate
+      window.location.href = card.dataset.href;
+    } else {
+      openPopup(card.dataset.popup, card.dataset.emoji, card.dataset.title, card.dataset.msg);
+    }
+  });
+});
+document.querySelectorAll('.card.locked-soon').forEach(card => {
+  card.addEventListener('click', e => {
+    e.preventDefault();
+    openPopup(card.dataset.popup, card.dataset.emoji, card.dataset.title, card.dataset.msg);
   });
 });
 

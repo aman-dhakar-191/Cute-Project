@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komal's Birthday Galaxy 🌟💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Baloo+2:wght@700;800;900&family=Nunito:wght@700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{ --pink:#ff7eb3;--rose:#ff3d7f;--lilac:#c9a0dc;--peach:#ffb347;--mint:#6edcc4;--gold:#ffd700;--sky:#74c7ec; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;cursor:none;user-select:none;}
+body{font-family:'Nunito',sans-serif;}
+
+#cur{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);font-size:22px;}
+
+/* ════════════ SLIDER ════════════ */
+#slider{display:flex;width:500vw;height:100vh;transition:transform .8s cubic-bezier(.77,0,.175,1);}
+.slide{width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0;}
+
+/* NAV */
+#dots{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:10px;}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.35);border:2px solid rgba(255,255,255,0.6);cursor:pointer;transition:all .3s;}
+.dot.active{background:#fff;transform:scale(1.35);}
+.nav-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:100;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.3);border-radius:50%;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;cursor:pointer;transition:all .2s;}
+.nav-arrow:hover{background:rgba(255,255,255,.35);transform:translateY(-50%) scale(1.1);}
+#navPrev{left:14px;} #navNext{right:14px;}
+
+/* ════════════ SLIDE 1 — GALAXY OPENING ════════════ */
+.s1{background:radial-gradient(ellipse at 50% 60%,#2a0a5e 0%,#120430 50%,#060210 100%);}
+.galaxy-bg{position:absolute;inset:0;overflow:hidden;}
+.galaxy-arm{position:absolute;border-radius:50%;animation:galaxySpin linear infinite;}
+@keyframes galaxySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.galaxy-star{position:absolute;border-radius:50%;background:#fff;animation:twinkle ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+
+.s1-content{z-index:5;text-align:center;padding:0 20px;}
+.s1-pre{font-family:'Baloo 2',cursive;font-size:clamp(.85rem,2.5vw,1rem);font-weight:800;color:rgba(200,180,255,.8);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;animation:fadeSlideUp .8s ease both;}
+.s1-name{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(3rem,11vw,6.5rem);
+  background:linear-gradient(135deg,#ffd700,#ff9eb8,#c9a0dc,#74c7ec);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(200,160,255,.6));
+  animation:fadeSlideUp .8s .2s ease both;
+  line-height:1.1;
+}
+.s1-title{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(1.3rem,4vw,2.4rem);
+  color:rgba(255,255,255,.9);
+  text-shadow:0 0 20px rgba(200,180,255,.5);
+  animation:fadeSlideUp .8s .4s ease both;
+  margin-bottom:16px;
+}
+.s1-sub{
+  font-family:'Baloo 2',cursive;font-size:clamp(.85rem,2.5vw,1rem);font-weight:800;
+  color:rgba(200,180,255,.75);
+  animation:fadeSlideUp .8s .6s ease both;
+  line-height:1.7;
+}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════════════ SLIDE 2 — MOON ════════════ */
+.s2{background:radial-gradient(ellipse at 50% 30%,#1a2040 0%,#0a1020 50%,#050810 100%);}
+.moon-wrap{
+  position:relative;cursor:pointer;z-index:5;
+  animation:moonPop 1s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes moonPop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.moon-css{
+  width:160px;height:160px;
+  background:radial-gradient(circle at 38% 42%,#fffde0,#ffe066 55%,#ffb347 100%);
+  border-radius:50%;
+  box-shadow:0 0 0 12px rgba(255,224,100,.12),0 0 0 28px rgba(255,224,100,.06),0 0 80px rgba(255,200,60,.4);
+  position:relative;
+  animation:moonGlow 3s ease-in-out infinite;
+}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 0 12px rgba(255,224,100,.12),0 0 0 28px rgba(255,224,100,.06),0 0 80px rgba(255,200,60,.4)}50%{box-shadow:0 0 0 20px rgba(255,224,100,.18),0 0 0 44px rgba(255,224,100,.09),0 0 120px rgba(255,200,60,.5)}}
+.moon-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.moon-eyes{display:flex;gap:24px;}
+.moon-eye{width:12px;height:12px;background:#7a4a00;border-radius:50%;}
+.moon-smile{width:30px;height:14px;border-radius:0 0 20px 20px;border-bottom:3px solid #7a4a00;}
+
+.s2-msg{
+  font-family:'Baloo 2',cursive;font-weight:900;font-size:clamp(1rem,3.5vw,1.4rem);
+  color:rgba(255,240,160,.95);
+  text-align:center;margin-top:24px;z-index:5;
+  animation:fadeSlideUp .8s .3s ease both;
+  text-shadow:0 0 20px rgba(255,220,100,.5);
+  max-width:380px;line-height:1.7;
+}
+.s2-sub{
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem;
+  color:rgba(200,200,255,.7);margin-top:10px;z-index:5;
+  animation:fadeSlideUp .8s .5s ease both;
+  text-align:center;
+}
+
+/* ════════════ SLIDE 3 — PLANETS ════════════ */
+.s3{background:radial-gradient(ellipse at 40% 60%,#1a0a4e 0%,#0a0628 50%,#040214 100%);}
+.solar-system{position:relative;width:300px;height:300px;z-index:5;}
+.sun-star{
+  position:absolute;top:50%;left:50%;
+  width:60px;height:60px;
+  background:radial-gradient(circle,#fffde0,#ffe066 55%,#ff9900);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 30px rgba(255,200,0,.6);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.orbit{
+  position:absolute;top:50%;left:50%;
+  border:1.5px solid rgba(255,255,255,.1);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:orbit linear infinite;
+}
+@keyframes orbit{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.planet{
+  position:absolute;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.o1{width:120px;height:120px;animation-duration:5s;}
+.o1 .planet{width:22px;height:22px;background:var(--rose);box-shadow:0 0 10px var(--rose);top:-11px;left:50%;transform:translateX(-50%);}
+.o2{width:190px;height:190px;animation-duration:9s;}
+.o2 .planet{width:26px;height:26px;background:var(--lilac);box-shadow:0 0 12px var(--lilac);top:-13px;left:50%;transform:translateX(-50%);}
+.o3{width:270px;height:270px;animation-duration:14s;}
+.o3 .planet{width:20px;height:20px;background:var(--mint);box-shadow:0 0 10px var(--mint);top:-10px;left:50%;transform:translateX(-50%);}
+
+.s3-msg{
+  font-family:'Baloo 2',cursive;font-weight:900;font-size:clamp(.95rem,3vw,1.2rem);
+  color:rgba(200,180,255,.9);
+  text-align:center;margin-top:24px;z-index:5;
+  animation:fadeSlideUp .8s .3s ease both;
+  max-width:360px;line-height:1.7;
+}
+
+/* ════════════ SLIDE 4 — SHOOTING STAR / WISH ════════════ */
+.s4{background:radial-gradient(ellipse at 60% 20%,#1a0840 0%,#0a0420 50%,#040110 100%);}
+.wish-area{
+  z-index:5;text-align:center;padding:0 24px;
+}
+.s4-icon{font-size:5rem;animation:iconPop 1s cubic-bezier(.34,1.56,.64,1) both;display:block;margin-bottom:14px;}
+@keyframes iconPop{from{opacity:0;transform:scale(.2) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0deg)}}
+.s4-title{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(1.6rem,5vw,2.6rem);
+  color:#fff;
+  text-shadow:0 0 30px rgba(255,200,100,.5);
+  margin-bottom:12px;
+  animation:fadeSlideUp .8s .25s ease both;
+}
+.s4-msg{
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(.9rem,2.8vw,1.05rem);
+  color:rgba(220,200,255,.85);
+  line-height:1.8;max-width:380px;margin:0 auto 20px;
+  animation:fadeSlideUp .8s .4s ease both;
+}
+.wish-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#ffd700,#ff9900);
+  color:#5a3000;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:900;
+  padding:12px 32px;border-radius:50px;
+  cursor:pointer;border:none;
+  box-shadow:0 4px 20px rgba(255,180,0,.4);
+  transition:transform .15s,box-shadow .15s;
+  animation:fadeSlideUp .8s .6s ease both;
+}
+.wish-btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,180,0,.6);}
+.s4-wish-text{
+  font-family:'Dancing Script',cursive;
+  font-size:1.1rem;color:rgba(255,230,150,.8);
+  margin-top:14px;opacity:0;transition:opacity .6s;
+  animation:none;
+}
+.s4-wish-text.show{opacity:1;}
+
+/* ════════════ SLIDE 5 — FINAL ════════════ */
+.s5{background:linear-gradient(160deg,#2a0a4e 0%,#1a0840 30%,#ff3d7f33 70%,#ff7eb344 100%);}
+.s5-stars-bg{position:absolute;inset:0;}
+.s5-content{z-index:5;text-align:center;padding:0 24px;}
+.s5-big{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(1.8rem,7vw,4rem);
+  background:linear-gradient(135deg,#ffd700,#ff9eb8,#c9a0dc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 20px rgba(255,150,200,.4));
+  animation:fadeSlideUp .8s ease both;
+  line-height:1.2;margin-bottom:12px;
+}
+.s5-glass{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(16px);
+  border:2px solid rgba(255,255,255,.2);
+  border-radius:28px;padding:24px 28px;
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:clamp(.88rem,2.6vw,1rem);
+  color:rgba(255,230,240,.9);
+  line-height:1.8;
+  box-shadow:0 8px 32px rgba(200,100,180,.2);
+  max-width:420px;
+  animation:fadeSlideUp .8s .25s ease both;
+  text-align:center;
+  margin-bottom:20px;
+}
+.s5-home{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--pink),var(--rose));
+  color:#fff;font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:900;
+  padding:12px 32px;border-radius:50px;
+  box-shadow:0 4px 18px rgba(255,61,127,.4);
+  cursor:pointer;text-decoration:none;
+  transition:transform .15s,box-shadow .15s;
+  animation:fadeSlideUp .8s .5s ease both;
+}
+.s5-home:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(255,61,127,.6);}
+</style>
+</head>
+<body>
+
+<div id="cur">🌟</div>
+
+<!-- SLIDER -->
+<div id="slider">
+
+  <!-- ═══ SLIDE 1 — GALAXY ═══ -->
+  <div class="slide s1">
+    <div class="galaxy-bg" id="galaxyBg"></div>
+    <div class="s1-content">
+      <div class="s1-pre">✦ A universe made for you ✦</div>
+      <div class="s1-name">Komal</div>
+      <div class="s1-title">Happy Birthday! 🌟</div>
+      <p class="s1-sub">Every star in this galaxy knows your name.<br>The universe has been waiting to celebrate you. 💕</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 2 — MOON ═══ -->
+  <div class="slide s2">
+    <div class="s2-stars" id="s2stars"></div>
+    <div class="moon-wrap" id="moonWrap">
+      <div class="moon-css">
+        <div class="moon-face">
+          <div class="moon-eyes"><div class="moon-eye"></div><div class="moon-eye"></div></div>
+          <div class="moon-smile"></div>
+        </div>
+      </div>
+    </div>
+    <p class="s2-msg">You light up everything 🌙<br>Even the moon gets a little jealous of how bright you are.</p>
+    <p class="s2-sub">Tap the moon ✨</p>
+  </div>
+
+  <!-- ═══ SLIDE 3 — PLANETS ═══ -->
+  <div class="slide s3">
+    <div class="solar-system">
+      <div class="sun-star">☀️</div>
+      <div class="orbit o1"><div class="planet">💖</div></div>
+      <div class="orbit o2"><div class="planet">🌸</div></div>
+      <div class="orbit o3"><div class="planet">✨</div></div>
+    </div>
+    <p class="s3-msg">Everything in my universe revolves around you 💫<br>You are the centre of every good thing.</p>
+  </div>
+
+  <!-- ═══ SLIDE 4 — WISH ═══ -->
+  <div class="slide s4">
+    <div class="wish-area">
+      <span class="s4-icon">🌠</span>
+      <div class="s4-title">Make a Birthday Wish!</div>
+      <p class="s4-msg">One shooting star, just for you.<br>Close your eyes, think of something wonderful,<br>and let it fly. 🌟</p>
+      <button class="wish-btn" onclick="sendWish()">✨ Send My Wish!</button>
+      <p class="s4-wish-text" id="wishText">Your wish is already on its way... and knowing you, it's coming true 💖</p>
+    </div>
+  </div>
+
+  <!-- ═══ SLIDE 5 — FINAL ═══ -->
+  <div class="slide s5">
+    <div class="s5-stars-bg" id="s5stars"></div>
+    <div class="s5-content">
+      <div class="s5-big">You Are My Universe 💖</div>
+      <div class="s5-glass">
+        The stars, the moon, the galaxies...<br>
+        None of them compare to what you are to me.<br><br>
+        Happy Birthday, Komal. 🎂<br>
+        I love you more than all the stars combined — and this galaxy is just the beginning. ✨
+      </div>
+      <a class="s5-home" href="index.html">💕 Back to Love World</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAV -->
+<div id="dots">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+</div>
+<div class="nav-arrow" id="navPrev" onclick="prev()">‹</div>
+<div class="nav-arrow" id="navNext" onclick="next()">›</div>
+
+<script>
+/* ── cursor ── */
+const cur=document.getElementById('cur');
+const curList=['🌟','✨','💫','🌙','💕','⭐','💖','🌸'];
+let ci=0;
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+setInterval(()=>{ci=(ci+1)%curList.length;cur.textContent=curList[ci];},650);
+
+/* ── galaxy bg ── */
+const gbg=document.getElementById('galaxyBg');
+for(let i=0;i<180;i++){
+  const s=document.createElement('div');
+  s.className='galaxy-star';
+  const sz=Math.random()*2.5+0.5;
+  s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${Math.random()*3+1.5}s;animation-delay:${Math.random()*4}s;`;
+  gbg.appendChild(s);
+}
+
+/* ── slider ── */
+let cur_slide=0;const total=5;
+const slider=document.getElementById('slider');
+const dots=document.querySelectorAll('.dot');
+function goTo(n){
+  cur_slide=Math.max(0,Math.min(total-1,n));
+  slider.style.transform=`translateX(-${cur_slide*100}vw)`;
+  dots.forEach((d,i)=>d.classList.toggle('active',i===cur_slide));
+  document.getElementById('navPrev').style.opacity=cur_slide===0?'0.3':'1';
+  document.getElementById('navNext').style.opacity=cur_slide===total-1?'0.3':'1';
+  if(cur_slide===1) buildS2Stars();
+  if(cur_slide===4) buildS5Stars();
+}
+function prev(){goTo(cur_slide-1);}
+function next(){goTo(cur_slide+1);}
+goTo(0);
+
+/* ── touch swipe ── */
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?next():prev();}},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')next();if(e.key==='ArrowLeft'||e.key==='ArrowUp')prev();});
+
+/* ── click sparks ── */
+document.querySelectorAll('.slide').forEach(s=>{
+  s.addEventListener('click',e=>{
+    if(e.target.closest('.nav-arrow,.wish-btn,.s5-home,#moonWrap')) return;
+    for(let i=0;i<10;i++) setTimeout(()=>{
+      const p=document.createElement('div');
+      p.style.cssText=`position:fixed;font-size:1rem;left:${e.clientX+(Math.random()-0.5)*70}px;top:${e.clientY+(Math.random()-0.5)*70}px;pointer-events:none;z-index:99;animation:fadeSlideUp .8s ease-out forwards;`;
+      p.textContent=['⭐','✨','💫','🌟','💕'][Math.floor(Math.random()*5)];
+      document.body.appendChild(p);setTimeout(()=>p.remove(),900);
+    },i*50);
+  });
+});
+
+/* ── moon tap ── */
+let moonGlowing=false;
+document.getElementById('moonWrap').addEventListener('click',e=>{
+  if(moonGlowing) return; moonGlowing=true;
+  e.stopPropagation();
+  // hearts burst
+  for(let i=0;i<18;i++){
+    setTimeout(()=>{
+      const h=document.createElement('div');
+      const mr=document.getElementById('moonWrap').getBoundingClientRect();
+      h.style.cssText=`position:fixed;font-size:1.4rem;left:${mr.left+mr.width/2+(Math.random()-0.5)*100}px;top:${mr.top+(Math.random()-0.5)*80}px;pointer-events:none;z-index:99;animation:fadeSlideUp 1.5s ease-out forwards;`;
+      h.textContent=['💛','⭐','🌟','✨','🎂'][Math.floor(Math.random()*5)];
+      document.body.appendChild(h);setTimeout(()=>h.remove(),1600);
+    },i*80);
+  }
+  setTimeout(()=>{moonGlowing=false;},2000);
+});
+
+/* ── slide 2 stars ── */
+let s2done=false;
+function buildS2Stars(){
+  if(s2done) return; s2done=true;
+  const sf=document.getElementById('s2stars')||document.querySelector('.s2');
+  for(let i=0;i<80;i++){
+    const s=document.createElement('div');
+    s.className='galaxy-star';
+    const sz=Math.random()*2+0.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${Math.random()*3+1.5}s;animation-delay:${Math.random()*3}s;position:absolute;border-radius:50%;background:#fff;`;
+    document.querySelector('.s2').appendChild(s);
+  }
+  // shooting stars
+  setInterval(()=>{
+    if(cur_slide!==1) return;
+    const ss=document.createElement('div');
+    const len=Math.random()*100+50;
+    ss.style.cssText=`position:absolute;height:2px;width:${len}px;border-radius:2px;background:linear-gradient(90deg,transparent,#fff,transparent);left:${Math.random()*80+20}%;top:${Math.random()*40}%;animation:shoot ${Math.random()*1.5+1}s linear forwards;pointer-events:none;z-index:2;`;
+    document.querySelector('.s2').appendChild(ss);
+    setTimeout(()=>ss.remove(),3000);
+  },2200);
+}
+
+/* ── wish button ── */
+let wished=false;
+function sendWish(){
+  if(wished) return; wished=true;
+  const btn=document.querySelector('.wish-btn');
+  btn.style.transform='scale(0.8)'; btn.style.opacity='0.5';
+  // shooting star burst
+  for(let i=0;i<25;i++){
+    setTimeout(()=>{
+      const s=document.createElement('div');
+      const a=Math.random()*Math.PI*2, d=Math.random()*200+80;
+      s.style.cssText=`position:fixed;font-size:${Math.random()*1+0.8}rem;left:${innerWidth/2+Math.cos(a)*d}px;top:${innerHeight/2+Math.sin(a)*d}px;pointer-events:none;z-index:99;animation:fadeSlideUp 1.2s ease-out forwards;`;
+      s.textContent=['🌟','✨','💫','⭐','💖'][Math.floor(Math.random()*5)];
+      document.body.appendChild(s);setTimeout(()=>s.remove(),1300);
+    },i*60);
+  }
+  setTimeout(()=>{
+    document.getElementById('wishText').classList.add('show');
+    setTimeout(()=>next(),2200);
+  },1200);
+}
+
+/* ── slide 5 stars ── */
+let s5done=false;
+function buildS5Stars(){
+  if(s5done) return; s5done=true;
+  for(let i=0;i<120;i++){
+    const s=document.createElement('div');
+    const sz=Math.random()*2.5+0.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${Math.random()*3+1.5}s;animation-delay:${Math.random()*4}s;position:absolute;border-radius:50%;background:#fff;animation-name:twinkle;animation-timing-function:ease-in-out;animation-iteration-count:infinite;`;
+    document.getElementById('s5stars').appendChild(s);
+  }
+  // celebration hearts
+  for(let i=0;i<30;i++){
+    setTimeout(()=>{
+      const h=document.createElement('div');
+      const a=Math.random()*Math.PI*2,d=Math.random()*180+80;
+      h.style.cssText=`position:fixed;font-size:1.3rem;left:${innerWidth/2+Math.cos(a)*d}px;top:${innerHeight/2+Math.sin(a)*d}px;pointer-events:none;z-index:99;animation:fadeSlideUp 1.5s ease-out forwards;`;
+      h.textContent=['💕','💖','🌸','✨','🌟','💗'][Math.floor(Math.random()*6)];
+      document.body.appendChild(h);setTimeout(()=>h.remove(),1600);
+    },i*80);
+  }
+}
+</script>
+</body>
+</html>
