@@ -1,0 +1,46 @@
+{
+  "name": "Komal's Love World 💖",
+  "short_name": "Love World",
+  "description": "A whole universe of cute games & sweet surprises — made with love, just for you",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff0f7",
+  "theme_color": "#ff7eb3",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Birthday Surprise 🎂",
+      "short_name": "Birthday",
+      "url": "./komal-birthday.html",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Surprise Room 🎈",
+      "short_name": "Surprise",
+      "url": "./komal-surprise.html",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Love Shower 💕",
+      "short_name": "Love Shower",
+      "url": "./love-shower-game.html",
+      "icons": [{ "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}
