@@ -1,5 +1,5 @@
 /* ── Komal's Love World — Service Worker ── */
-const CACHE = 'love-world-v1';
+const CACHE = 'love-world-v2';
 
 const ASSETS = [
   './',

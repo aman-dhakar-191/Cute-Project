@@ -14,31 +14,49 @@ async function _checkNotifications() {
   if (!('Notification' in window)) return;
   if (Notification.permission !== 'granted') return;
   try {
-    const res = await fetch('./notifications.json?v=' + Date.now());
+    // Always bypass cache so the latest notifications.json is used
+    const res = await fetch('./notifications.json', { cache: 'no-store' });
     const { notifications } = await res.json();
     const now = Date.now();
+
+    // Prefer service worker showNotification — required in standalone PWA mode
+    const swReg = ('serviceWorker' in navigator)
+      ? await navigator.serviceWorker.ready.catch(() => null)
+      : null;
+
     for (const n of notifications) {
       if (_shownThisSession.has(n.id)) continue;
       const from  = n.showFrom  ? +new Date(n.showFrom)  : 0;
       const until = n.showUntil ? +new Date(n.showUntil) : Infinity;
       if (now < from || now > until) continue;
       _shownThisSession.add(n.id);
-      setTimeout(() => {
-        const notif = new Notification(n.title, {
+
+      setTimeout(async () => {
+        const opts = {
           body:    n.body,
           icon:    n.icon    || './icons/icon.svg',
           badge:   './icons/icon.svg',
-          tag:     n.tag,
+          tag:     n.tag     || n.id,
           vibrate: n.vibrate || [200, 100, 200],
-        });
-        notif.onclick = () => {
-          window.focus();
-          if (n.url) window.location.href = n.url;
-          notif.close();
+          data:    { url: n.url || './' },
         };
+        if (swReg) {
+          // Works in background, standalone mode, and foreground
+          await swReg.showNotification(n.title, opts);
+        } else {
+          // Fallback (desktop without SW)
+          const notif = new Notification(n.title, opts);
+          notif.onclick = () => {
+            window.focus();
+            if (n.url) window.location.href = n.url;
+            notif.close();
+          };
+        }
       }, n.delayMs || 800);
     }
-  } catch (_) { /* silent — works offline from SW cache */ }
+  } catch (e) {
+    console.warn('[PWA] notification check failed:', e);
+  }
 }
 
 /* ── 3. Permission banner ── */
