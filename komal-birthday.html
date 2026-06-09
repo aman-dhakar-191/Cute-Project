@@ -70,11 +70,11 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 .candle-row{display:flex;gap:10px;align-items:flex-end;margin-bottom:-4px;z-index:5;position:relative;}
 .candle{display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;}
 .flame{
-  width:12px;height:19px;
-  background:radial-gradient(ellipse at 50% 65%,#fff 0%,#ffd700 35%,#ff9900 75%,transparent 100%);
-  border-radius:50% 50% 40% 40%;
-  animation:flicker .28s ease-in-out infinite alternate;
-  filter:drop-shadow(0 0 5px #ffd700);
+  width:14px;height:23px;
+  background:radial-gradient(ellipse at 50% 60%,#fff 0%,#fffce0 15%,#ffd700 38%,#ff9900 68%,#ff5500 90%,transparent 100%);
+  border-radius:50% 50% 35% 35%;
+  animation:flicker .24s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 7px #ffd700) drop-shadow(0 0 14px rgba(255,170,0,.6));
   transition:opacity .2s;
 }
 .flame.out{opacity:0;pointer-events:none;}
@@ -94,43 +94,84 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
   100%{opacity:0;transform:translateX(-50%) translateY(-32px) scaleX(4);}
 }
 .candle-body{
-  width:9px;height:30px;
-  background:repeating-linear-gradient(to bottom,#ff7eb3 0,#ff7eb3 4px,#fff 4px,#fff 8px);
-  border-radius:3px 3px 1px 1px;
-  box-shadow:inset -2px 0 4px rgba(0,0,0,.1);
+  width:10px;
+  border-radius:4px 4px 2px 2px;
+  box-shadow:inset -2px 0 5px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.08);
 }
-.candle-base{width:11px;height:5px;background:#ffb347;border-radius:1px 1px 4px 4px;}
+.candle:nth-child(1) .candle-body{height:30px;background:repeating-linear-gradient(to bottom,#ff7eb3 0,#ff7eb3 5px,#fff5fa 5px,#fff5fa 10px);}
+.candle:nth-child(2) .candle-body{height:38px;background:repeating-linear-gradient(to bottom,#c9a0dc 0,#c9a0dc 5px,#f8f0ff 5px,#f8f0ff 10px);}
+.candle:nth-child(3) .candle-body{height:46px;background:repeating-linear-gradient(to bottom,#ffd700 0,#ffd700 5px,#fffff0 5px,#fffff0 10px);}
+.candle:nth-child(4) .candle-body{height:38px;background:repeating-linear-gradient(to bottom,#74c7ec 0,#74c7ec 5px,#f0f9ff 5px,#f0f9ff 10px);}
+.candle:nth-child(5) .candle-body{height:30px;background:repeating-linear-gradient(to bottom,#6edcc4 0,#6edcc4 5px,#f0fff8 5px,#f0fff8 10px);}
+.candle-base{width:13px;height:7px;background:linear-gradient(to bottom,#ffcf6a,#e08820);border-radius:2px 2px 6px 6px;box-shadow:0 2px 5px rgba(0,0,0,.14);}
 
 /* Cake */
 .cake-wrap{position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer;}
-.cake-frosting{background:#fff;border-radius:0 0 50% 50% / 0 0 30px 30px;height:14px;position:relative;z-index:2;}
-/* drip effect via box-shadow */
+.cake-frosting{background:#fff;border-radius:0 0 55% 55% / 0 0 28px 28px;height:16px;position:relative;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.05);}
 .drips{
-  position:absolute;bottom:-8px;left:0;right:0;height:12px;
+  position:absolute;bottom:-14px;left:0;right:0;height:18px;
   background:
-    radial-gradient(circle at 12% 0%,#fff 10px,transparent 10px),
-    radial-gradient(circle at 30% 0%,#fff 8px,transparent 8px),
-    radial-gradient(circle at 50% 0%,#fff 11px,transparent 11px),
-    radial-gradient(circle at 70% 0%,#fff 7px,transparent 7px),
-    radial-gradient(circle at 88% 0%,#fff 9px,transparent 9px);
+    radial-gradient(circle at 6%  0%,#fff  9px,transparent 9px),
+    radial-gradient(circle at 17% 0%,#fff 12px,transparent 12px),
+    radial-gradient(circle at 28% 0%,#fff  7px,transparent 7px),
+    radial-gradient(circle at 39% 0%,#fff 13px,transparent 13px),
+    radial-gradient(circle at 50% 0%,#fff  8px,transparent 8px),
+    radial-gradient(circle at 61% 0%,#fff 11px,transparent 11px),
+    radial-gradient(circle at 72% 0%,#fff  7px,transparent 7px),
+    radial-gradient(circle at 83% 0%,#fff 10px,transparent 10px),
+    radial-gradient(circle at 94% 0%,#fff  8px,transparent 8px);
 }
-.tier{display:flex;align-items:center;justify-content:center;border-radius:6px;position:relative;overflow:hidden;}
-.tier::before{/* shine overlay */
-  content:'';position:absolute;top:0;left:0;right:0;height:40%;
-  background:rgba(255,255,255,.18);border-radius:6px 6px 0 0;
+.tier{display:flex;align-items:center;justify-content:center;border-radius:8px;position:relative;overflow:hidden;}
+.tier::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:38%;
+  background:rgba(255,255,255,.22);border-radius:8px 8px 0 0;
 }
-.tier1{width:200px;height:72px;background:linear-gradient(to bottom,#ff7eb3,#ff4d93);}
-.tier2{width:156px;height:58px;background:linear-gradient(to bottom,#c9a0dc,#a868c8);}
-.tier3{width:112px;height:48px;background:linear-gradient(to bottom,#ffb347,#e08820);}
-.tier1-frosting{width:200px;}
-.tier2-frosting{width:156px;}
-.plate{width:218px;height:14px;background:linear-gradient(to bottom,#f5c6dc,#e8a8c4);border-radius:50%;box-shadow:0 4px 18px rgba(255,80,140,.2);}
+.tier::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:16%;
+  background:rgba(0,0,0,.06);
+}
+.tier1{
+  width:212px;height:82px;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.62) 2px,transparent 2px) 10px 18px / 22px 22px,
+    radial-gradient(circle,rgba(255,255,255,.38) 1.5px,transparent 1.5px) 21px 6px / 18px 18px,
+    radial-gradient(circle,rgba(255,255,255,.45) 1.5px,transparent 1.5px) 3px 3px / 14px 14px,
+    linear-gradient(to bottom,#ff85b5,#ff3d7f);
+  box-shadow:0 8px 26px rgba(255,61,127,.32),inset 0 2px 0 rgba(255,255,255,.28);
+}
+.tier2{
+  width:160px;height:64px;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.58) 1.8px,transparent 1.8px) 8px 14px / 20px 20px,
+    radial-gradient(circle,rgba(255,255,255,.35) 1.2px,transparent 1.2px) 17px 4px / 16px 16px,
+    linear-gradient(to bottom,#d4a8ef,#9b45d8);
+  box-shadow:0 6px 22px rgba(130,60,220,.28),inset 0 2px 0 rgba(255,255,255,.24);
+}
+.tier3{
+  width:110px;height:50px;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.58) 1.5px,transparent 1.5px) 7px 12px / 18px 18px,
+    radial-gradient(circle,rgba(255,255,255,.35) 1px,transparent 1px) 15px 4px / 14px 14px,
+    linear-gradient(to bottom,#6edcc4,#22b5a0);
+  box-shadow:0 5px 18px rgba(34,181,160,.28),inset 0 2px 0 rgba(255,255,255,.24);
+}
+.plate{width:230px;height:13px;background:linear-gradient(180deg,#ffe4f0 0%,#f0a8c4 60%,#e090b8 100%);border-radius:50%;box-shadow:0 5px 20px rgba(255,80,140,.25),0 5px 0 #e090b8,inset 0 2px 3px rgba(255,255,255,.55);}
+.cake-stand{display:flex;flex-direction:column;align-items:center;}
+.stand-stem{width:16px;height:16px;background:linear-gradient(to right,#e090b8,#f8d0e4,#e090b8);border-radius:0 0 3px 3px;}
+.stand-foot{width:88px;height:10px;background:linear-gradient(180deg,#f5c6dc,#e090b8);border-radius:50%;box-shadow:0 3px 12px rgba(255,80,140,.2);}
+/* Cake topper */
+.cake-topper{font-size:2rem;filter:drop-shadow(0 0 10px rgba(255,215,0,.85));animation:topperBob 2.2s ease-in-out infinite;margin-bottom:-6px;position:relative;z-index:10;}
+@keyframes topperBob{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-7px) scale(1.1);}}
 
 /* Age "24" on tier1 */
 .cake-age{
-  font-family:'Pacifico',cursive;font-size:2rem;
-  color:rgba(255,255,255,.92);text-shadow:0 2px 8px rgba(0,0,0,.15);
-  pointer-events:none;
+  font-family:'Pacifico',cursive;font-size:2.2rem;
+  color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.2),0 0 24px rgba(255,220,130,.75);
+  pointer-events:none;position:relative;z-index:2;
+  background:rgba(255,255,255,.17);
+  padding:2px 14px;border-radius:22px;
+  border:2px solid rgba(255,255,255,.38);
 }
 
 /* Knife */
@@ -165,7 +206,7 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
     #fdd6b4 32px,#fdd6b4 60px,
     #c9a0dc 60px,#c9a0dc 66px,
     #fdd6b4 66px,#fdd6b4 95px,
-    #ffb347 95px,#ffb347 101px,
+    #6edcc4 95px,#6edcc4 101px,
     #fdd6b4 101px
   );
   opacity:0;transform:translateX(0) rotate(0deg);
@@ -387,6 +428,9 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
       <div class="knife-handle"></div>
     </div>
 
+    <!-- Topper -->
+    <div class="cake-topper">⭐</div>
+
     <!-- Candles -->
     <div class="candle-row" id="candleRow">
       <div class="candle" onclick="blowCandle(0)">
@@ -423,13 +467,13 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 
     <!-- Top tier -->
     <div style="position:relative">
-      <div class="tier tier3">🌟</div>
-      <div class="cake-frosting tier3-f" style="width:112px;"></div>
+      <div class="tier tier3">✨</div>
+      <div class="cake-frosting" style="width:110px;position:relative;"><div class="drips"></div></div>
     </div>
     <!-- Middle tier -->
     <div style="position:relative">
       <div class="tier tier2">💕</div>
-      <div class="cake-frosting" style="width:156px;position:relative;">
+      <div class="cake-frosting" style="width:160px;position:relative;">
         <div class="drips"></div>
       </div>
     </div>
@@ -438,12 +482,16 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
       <div class="tier tier1">
         <span class="cake-age">24</span>
       </div>
-      <div class="cake-frosting" style="width:200px;position:relative;">
+      <div class="cake-frosting" style="width:212px;position:relative;">
         <div class="drips"></div>
       </div>
     </div>
 
     <div class="plate"></div>
+    <div class="cake-stand">
+      <div class="stand-stem"></div>
+      <div class="stand-foot"></div>
+    </div>
 
     <!-- Slice that slides out on cut -->
     <div class="cake-slice" id="cakeSlice"></div>
