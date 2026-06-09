@@ -337,49 +337,25 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
   opacity:.45;
   z-index:1;
 }
-/* flap */
+/* flap — proper downward triangle */
 .env-flap{
-  position:absolute;top:0;left:0;right:0;
-  height:0;
-  border-left:122px solid transparent;border-right:122px solid transparent;
-  border-top:85px solid #ffd6a0;
+  position:absolute;top:0;left:50%;
+  width:0;height:0;
+  margin-left:-120px;
+  border-left:120px solid transparent;border-right:120px solid transparent;
+  border-top:80px solid #ffd6a0;
   z-index:4;transform-origin:top center;
-  transition:transform .6s cubic-bezier(.77,0,.175,1);
-  border-radius:8px 8px 0 0;
-  filter:drop-shadow(0 4px 6px rgba(0,0,0,.08));
+  transition:transform .65s cubic-bezier(.77,0,.175,1);
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.1));
 }
 .env-scene.opened .env-flap{transform:rotateX(-175deg);}
 /* seal */
 .env-seal{
-  position:absolute;top:70px;left:50%;transform:translateX(-50%);
-  font-size:1.8rem;z-index:5;
+  position:absolute;top:60px;left:50%;transform:translateX(-50%);
+  font-size:1.9rem;z-index:5;
   transition:opacity .3s;
 }
 .env-scene.opened .env-seal{opacity:0;}
-
-/* Letter paper rises from envelope */
-.letter-paper{
-  position:absolute;bottom:10px;left:10px;right:10px;
-  height:140px;
-  background:linear-gradient(to bottom,#fffdf8,#fff8f0);
-  border-radius:4px;
-  border:1px solid rgba(255,200,160,.4);
-  z-index:6;
-  overflow:hidden;
-  transform:translateY(0);
-  transition:transform .65s cubic-bezier(.77,0,.175,1) .2s,height .65s ease .2s;
-}
-.env-scene.opened .letter-paper{
-  transform:translateY(-180px);
-  height:340px;
-}
-.letter-inner{
-  padding:20px 16px 16px;
-  font-family:'Dancing Script',cursive;
-  font-size:1.1rem;color:#3d1a2e;line-height:1.85;
-  opacity:0;transition:opacity .5s ease .7s;
-}
-.env-scene.opened .letter-inner{opacity:1;}
 
 .s4-hint{
   color:rgba(255,255,255,.6);font-size:.82rem;font-weight:700;
@@ -396,6 +372,45 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 }
 .s4-home.visible{opacity:1;pointer-events:all;}
 .s4-home:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(255,61,127,.5);}
+
+/* Letter modal */
+.lmodal{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(50,10,35,.9);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px 20px;
+  opacity:0;pointer-events:none;
+  transition:opacity .42s ease;
+}
+.lmodal.show{opacity:1;pointer-events:all;}
+.lcard{
+  background:linear-gradient(180deg,#fff8f0,#fff);
+  border-radius:24px;padding:34px 26px 28px;
+  max-width:400px;width:100%;max-height:82vh;overflow-y:auto;
+  box-shadow:0 22px 80px rgba(255,61,127,.35);
+  border:2px solid rgba(255,126,179,.3);
+  transform:scale(.78) translateY(30px);
+  transition:transform .45s cubic-bezier(.34,1.56,.64,1);
+}
+.lmodal.show .lcard{transform:scale(1) translateY(0);}
+.lcard-title{
+  font-family:'Pacifico',cursive;font-size:1.6rem;
+  color:var(--rose);text-align:center;margin-bottom:22px;
+}
+.lcard-body{
+  font-family:'Dancing Script',cursive;font-size:1.13rem;
+  color:#3d1a2e;line-height:1.9;white-space:pre-wrap;
+}
+.lcard-close{
+  display:block;margin:26px auto 0;
+  background:linear-gradient(135deg,var(--pink),var(--rose));
+  color:#fff;border:none;border-radius:30px;
+  padding:12px 30px;
+  font-family:'Baloo 2',cursive;font-size:.98rem;font-weight:900;
+  cursor:pointer;box-shadow:0 4px 18px rgba(255,61,127,.32);
+  transition:transform .15s,box-shadow .15s;
+}
+.lcard-close:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(255,61,127,.5);}
 </style>
 </head>
 <body>
@@ -532,20 +547,8 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
       <div class="env-body">
         <div class="env-left"></div>
         <div class="env-right"></div>
-        <div class="env-body-fill"></div>
         <div class="env-flap"></div>
         <div class="env-seal">💌</div>
-        <div class="letter-paper">
-          <div class="letter-inner">
-            Dear Komal,<br><br>
-            Happy Birthday. 🎂<br><br>
-            Your laugh. The way you talk. The whole vibe between us — I love it. Didn't overthink it. It just is what it is.<br><br>
-            I think about traveling with you. About all the places we haven't seen yet. About the small everyday stuff — the kind that doesn't sound like much but ends up being everything.<br><br>
-            I'm getting more attached every day and honestly? I'm not trying to slow it down. I'm just waiting — for marriage, for us to actually be together properly. Can't come soon enough.<br><br>
-            Happy Birthday, Komal. Genuinely glad you exist. 💖<br><br>
-            Yours, Aman
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -709,8 +712,21 @@ function openGift(){
 
 /* ── LETTER ── */
 let letterOpen=false;
+const LETTER=`Dear Komal,
+
+Happy Birthday. 🎂
+
+Your laugh. The way you talk. The whole vibe between us — I love it. Didn't overthink it. It just is what it is.
+
+I think about traveling with you. About all the places we haven't seen yet. About the small everyday stuff — the kind that doesn't sound like much but ends up being everything.
+
+I'm getting more attached every day and honestly? I'm not trying to slow it down. I'm just waiting — for marriage, for us to actually be together properly. Can't come soon enough.
+
+Happy Birthday, Komal. Genuinely glad you exist. 💖
+
+Yours, Aman`;
+
 function onLetterSlide(){
-  // build stars once
   if(document.getElementById('starBg').children.length>0)return;
   const sb=document.getElementById('starBg');
   for(let i=0;i<90;i++){
@@ -727,12 +743,26 @@ function openLetter(){
   letterOpen=true;
   scene.classList.add('opened');
   sp(innerWidth/2,innerHeight*.4,50,['#ff7eb3','#ff3d7f','#ffd700','#c9a0dc','#fff']);
+  document.getElementById('lcardBody').textContent=LETTER;
   setTimeout(()=>{
     document.getElementById('s4hint').style.opacity='0';
-    document.getElementById('s4home').classList.add('visible');
-  },1400);
+    document.getElementById('lmodal').classList.add('show');
+  },800);
+  setTimeout(()=>document.getElementById('s4home').classList.add('visible'),2200);
+}
+function closeLetter(){
+  document.getElementById('lmodal').classList.remove('show');
 }
 </script>
+<!-- Letter modal -->
+<div class="lmodal" id="lmodal" onclick="if(event.target===this)closeLetter()">
+  <div class="lcard">
+    <div class="lcard-title">Dear Komal 💖</div>
+    <div class="lcard-body" id="lcardBody"></div>
+    <button class="lcard-close" onclick="closeLetter()">Close 🌸</button>
+  </div>
+</div>
+
 <script src="./pwa.js"></script>
 </body>
 </html>
