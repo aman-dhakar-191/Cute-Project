@@ -664,23 +664,7 @@ body {
       <div class="card-btn" style="background:linear-gradient(135deg,#ffd700,#ff9900);color:#7a4a00">🔒 Unlocks Jun 21</div>
     </div>
 
-    <!-- 5. Birthday Galaxy — BIRTHDAY LOCKED -->
-    <div class="card card-gold locked-bday"
-         data-popup="bday"
-         data-href="komal-birthday-multiscreen.html"
-         data-emoji="🌟"
-         data-title="A Galaxy of Love"
-         data-msg="A whole galaxy is being built just for your birthday! Stars, wishes, moonlight... it'll take your breath away 🌙 Keep counting down! ✨">
-      <div class="lock-shimmer"></div>
-      <span class="card-badge" style="background:linear-gradient(135deg,#ffd700,#ff9900);color:#7a4a00">🔒 Jun 21</span>
-      <span class="card-emoji">🌟</span>
-      <h2>A Birthday Galaxy</h2>
-      <p>Stars are being placed, wishes are being packed &amp; the moon is getting ready... all for one very special person 💫</p>
-      <div class="countdown-pill" id="pill2">🌟 Loading...</div>
-      <div class="card-btn" style="background:linear-gradient(135deg,#ffd700,#ff9900);color:#7a4a00">🔒 Unlocks Jun 21</div>
-    </div>
-
-    <!-- 6. Komal's Cute Page — LIVE -->
+    <!-- 5. Komal's Cute Page — LIVE -->
     <a class="card card-sky" href="komal-cute.html">
       <span class="card-badge">🌈 Scene</span>
       <span class="card-emoji">🌸</span>
@@ -770,9 +754,7 @@ function updatePills() {
   const cd = getCountdown();
   const txt = pillText(cd);
   const p1 = document.getElementById('pill1');
-  const p2 = document.getElementById('pill2');
   if (p1) p1.textContent = txt;
-  if (p2) p2.textContent = txt.replace('🎂','🌟');
 }
 updatePills();
 setInterval(updatePills, 10000);
