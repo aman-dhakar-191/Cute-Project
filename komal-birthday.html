@@ -297,67 +297,56 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 .s-dot{position:absolute;border-radius:50%;background:#fff;animation:sTwinkle ease-in-out infinite;}
 @keyframes sTwinkle{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.85;transform:scale(1.4)}}
 
-/* Envelope */
-.env-scene{display:flex;flex-direction:column;align-items:center;cursor:pointer;}
-.env-wrap{
-  width:240px;height:160px;position:relative;
-  animation:envFloat 3.5s ease-in-out infinite;
+/* Letter card */
+.lscene{display:flex;flex-direction:column;align-items:center;cursor:pointer;margin-top:4px;}
+.lparchment{
+  width:min(300px,86vw);
+  background:linear-gradient(155deg,#fff9f2 0%,#fff4e4 50%,#fff9f2 100%);
+  border-radius:18px;
+  border:2px solid rgba(230,180,100,.5);
+  box-shadow:0 18px 55px rgba(0,0,0,.35),0 0 0 5px rgba(255,200,120,.12),inset 0 1px 0 rgba(255,255,255,.9);
+  padding:36px 26px 30px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  position:relative;overflow:hidden;
+  animation:cardFloat 4s ease-in-out infinite;
 }
-@keyframes envFloat{0%,100%{transform:translateY(0) rotate(-.8deg)}50%{transform:translateY(-12px) rotate(.8deg)}}
-.env-body{
-  width:240px;height:160px;
-  background:linear-gradient(to bottom,#fff8f0,#fff0e4);
-  border-radius:8px;border:2px solid rgba(255,179,71,.5);
-  position:absolute;bottom:0;
-  box-shadow:0 8px 30px rgba(0,0,0,.2);overflow:hidden;
+/* ruled paper lines */
+.lparchment::before{
+  content:'';position:absolute;inset:16px 20px;
+  background:repeating-linear-gradient(to bottom,transparent,transparent 30px,rgba(180,140,100,.13) 30px,rgba(180,140,100,.13) 31px);
+  pointer-events:none;
 }
-/* bottom V fold */
-.env-body::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  border-left:122px solid transparent;border-right:122px solid transparent;
-  border-bottom:70px solid rgba(255,183,71,.22);
+/* top ribbon accent */
+.lparchment::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:6px;
+  background:linear-gradient(90deg,var(--pink),var(--rose),var(--lilac),var(--rose),var(--pink));
+  border-radius:18px 18px 0 0;
 }
-/* left fold */
-.env-left{
-  position:absolute;bottom:0;left:0;
-  width:0;height:0;
-  border-bottom:160px solid #ffddba;
-  border-right:120px solid transparent;
-  border-radius:0 0 0 8px;
-  opacity:.45;
-  z-index:1;
+@keyframes cardFloat{
+  0%,100%{transform:translateY(0) rotate(-.5deg);}
+  50%{transform:translateY(-13px) rotate(.5deg);}
 }
-/* right fold */
-.env-right{
-  position:absolute;bottom:0;right:0;
-  width:0;height:0;
-  border-bottom:160px solid #ffcfaa;
-  border-left:120px solid transparent;
-  border-radius:0 0 8px 0;
-  opacity:.45;
-  z-index:1;
+.lseal{
+  font-size:4rem;margin-top:4px;
+  filter:drop-shadow(0 4px 16px rgba(255,61,127,.5));
+  animation:sealPulse 2.2s ease-in-out infinite;
+  position:relative;z-index:1;
 }
-/* flap — clip-path triangle (reliable cross-browser) */
-.env-flap{
-  position:absolute;top:0;left:0;right:0;height:82px;
-  background:linear-gradient(160deg,#ffc46a 0%,#e8a030 55%,#ffc46a 100%);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  z-index:4;transform-origin:top center;
-  transition:transform .65s cubic-bezier(.77,0,.175,1);
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
+@keyframes sealPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+.lfor-name{
+  font-family:'Pacifico',cursive;font-size:1.75rem;
+  color:#3d1a2e;position:relative;z-index:1;
+  text-shadow:0 1px 3px rgba(0,0,0,.08);
 }
-.env-scene.opened .env-flap{transform:rotateX(-175deg);}
-/* seal */
-.env-seal{
-  position:absolute;top:60px;left:50%;transform:translateX(-50%);
-  font-size:1.9rem;z-index:5;
-  transition:opacity .3s;
+.lwith-love{
+  font-family:'Dancing Script',cursive;font-size:1.1rem;
+  color:rgba(61,26,46,.55);position:relative;z-index:1;
 }
-.env-scene.opened .env-seal{opacity:0;}
-
-.s4-hint{
-  color:rgba(255,255,255,.6);font-size:.82rem;font-weight:700;
-  margin-top:20px;animation:hintPulse 2.2s ease-in-out infinite;
+.ltap-hint{
+  font-family:'Baloo 2',cursive;font-size:.8rem;font-weight:900;
+  color:rgba(61,26,46,.4);letter-spacing:.5px;
+  position:relative;z-index:1;margin-top:4px;
+  animation:hintPulse 2s ease-in-out infinite;
 }
 .s4-home{
   display:inline-block;
@@ -365,7 +354,7 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
   color:#fff;font-family:'Baloo 2',cursive;font-size:.92rem;font-weight:900;
   padding:11px 28px;border-radius:50px;text-decoration:none;
   box-shadow:0 4px 18px rgba(255,61,127,.35);
-  margin-top:18px;transition:transform .15s,box-shadow .15s;
+  margin-top:24px;transition:transform .15s,box-shadow .15s;
   opacity:0;pointer-events:none;
 }
 .s4-home.visible{opacity:1;pointer-events:all;}
@@ -538,20 +527,16 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
 <div class="slide s4">
   <div class="star-bg" id="starBg"></div>
   <div class="s4-title">One Last Thing 💌</div>
-  <div class="s4-sub">This one took me a while to write</div>
 
-  <div class="env-scene" id="envScene" onclick="openLetter()">
-    <div class="env-wrap">
-      <div class="env-body">
-        <div class="env-left"></div>
-        <div class="env-right"></div>
-        <div class="env-flap"></div>
-        <div class="env-seal">💌</div>
-      </div>
+  <div class="lscene" onclick="openLetter()">
+    <div class="lparchment">
+      <div class="lseal">💌</div>
+      <div class="lfor-name">For Komal</div>
+      <div class="lwith-love">with love 💕</div>
+      <div class="ltap-hint">tap to open ✉️</div>
     </div>
   </div>
 
-  <div class="s4-hint" id="s4hint">tap the envelope 💕</div>
   <a class="s4-home" id="s4home" href="index.html">💕 Back to Love World</a>
 </div>
 
@@ -736,19 +721,16 @@ function onLetterSlide(){
   }
 }
 function openLetter(){
-  const scene=document.getElementById('envScene');
   if(letterOpen)return;
   letterOpen=true;
-  scene.classList.add('opened');
-  sp(innerWidth/2,innerHeight*.4,50,['#ff7eb3','#ff3d7f','#ffd700','#c9a0dc','#fff']);
+  sp(innerWidth/2,innerHeight*.45,60,['#ff7eb3','#ff3d7f','#ffd700','#c9a0dc','#fff','#ffb347']);
   const lbody=document.getElementById('lcardBody');
   if(lbody) lbody.textContent=LETTER;
   setTimeout(()=>{
-    document.getElementById('s4hint').style.opacity='0';
     const m=document.getElementById('lmodal');
     if(m) m.classList.add('show');
-  },800);
-  setTimeout(()=>document.getElementById('s4home').classList.add('visible'),2200);
+  },500);
+  setTimeout(()=>document.getElementById('s4home').classList.add('visible'),2000);
 }
 function closeLetter(){
   document.getElementById('lmodal').classList.remove('show');
