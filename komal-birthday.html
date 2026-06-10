@@ -337,16 +337,14 @@ body{font-family:'Nunito',sans-serif;background:#fff0f7;}
   opacity:.45;
   z-index:1;
 }
-/* flap — proper downward triangle */
+/* flap — clip-path triangle (reliable cross-browser) */
 .env-flap{
-  position:absolute;top:0;left:50%;
-  width:0;height:0;
-  margin-left:-120px;
-  border-left:120px solid transparent;border-right:120px solid transparent;
-  border-top:80px solid #ffd6a0;
+  position:absolute;top:0;left:0;right:0;height:82px;
+  background:linear-gradient(160deg,#ffc46a 0%,#e8a030 55%,#ffc46a 100%);
+  clip-path:polygon(0 0,100% 0,50% 100%);
   z-index:4;transform-origin:top center;
   transition:transform .65s cubic-bezier(.77,0,.175,1);
-  filter:drop-shadow(0 4px 6px rgba(0,0,0,.1));
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
 }
 .env-scene.opened .env-flap{transform:rotateX(-175deg);}
 /* seal */
@@ -743,10 +741,12 @@ function openLetter(){
   letterOpen=true;
   scene.classList.add('opened');
   sp(innerWidth/2,innerHeight*.4,50,['#ff7eb3','#ff3d7f','#ffd700','#c9a0dc','#fff']);
-  document.getElementById('lcardBody').textContent=LETTER;
+  const lbody=document.getElementById('lcardBody');
+  if(lbody) lbody.textContent=LETTER;
   setTimeout(()=>{
     document.getElementById('s4hint').style.opacity='0';
-    document.getElementById('lmodal').classList.add('show');
+    const m=document.getElementById('lmodal');
+    if(m) m.classList.add('show');
   },800);
   setTimeout(()=>document.getElementById('s4home').classList.add('visible'),2200);
 }
